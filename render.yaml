@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: pocketbase-server
+    env: docker
+    plan: free
+    dockerfilePath: server/Dockerfile
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: PB_DATA_DIR
+        value: /pb/pb_data

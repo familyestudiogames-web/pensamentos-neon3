@@ -1,0 +1,45 @@
+{
+  "collections": [
+    {
+      "id": "messages",
+      "name": "messages",
+      "type": "base",
+      "schema": [
+        {
+          "name": "text",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "replyTo",
+          "type": "relation",
+          "options": {
+            "collectionId": "messages",
+            "maxSelect": 1
+          },
+          "required": false
+        },
+        {
+          "name": "replyCount",
+          "type": "number",
+          "required": true,
+          "options": {
+            "min": 0,
+            "max": 10
+          }
+        },
+        {
+          "name": "expiresAt",
+          "type": "date"
+        },
+        {
+          "name": "randomHash",
+          "type": "text"
+        }
+      ],
+      "indexes": [
+        "CREATE INDEX IF NOT EXISTS idx_messages_random ON messages(randomHash)"
+      ]
+    }
+  ]
+}
